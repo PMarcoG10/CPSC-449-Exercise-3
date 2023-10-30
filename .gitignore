@@ -18,6 +18,7 @@ Thumbs.db
 
 # Ignore SQLite database files (if not needed in version control)
 *.db
+*.txt
 
 # Ignore generated and temporary files from various development tools
 *.pyo
