@@ -35,9 +35,6 @@ log.txt
 # Ignore project-specific configuration files
 settings.ini
 
-# Ignore local development settings (e.g., for environment variables)
-.env
-
 # Ignore dependencies installed via pip (you can recreate them with requirements.txt)
 venv/
 env/
