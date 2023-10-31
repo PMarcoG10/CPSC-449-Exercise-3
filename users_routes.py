@@ -24,9 +24,6 @@ enrollmentdb = "database.db"
 
 ALGORITHM = "pbkdf2_sha256"
 
-class Settings(BaseSettings, env_file=".env", extra="ignore"):
-    database: str
-
 class Login(BaseModel):
     username: str
     password: str
@@ -113,7 +110,3 @@ def login(login: Login, db: sqlite3.Connection = Depends(get_users_db)):
 @users_router.get("/protected")
 def protected():
     return {"message": "JWT Verified, access granted"}
-
-
-
-
