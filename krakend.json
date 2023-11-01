@@ -1,0 +1,404 @@
+{
+    "$schema": "https://www.krakend.io/schema/v2.4/krakend.json",
+    "version": 3,
+    "endpoints": [
+        {
+            "_comment": "STUDENT API GET -  CLASSESS",
+            "endpoint": "/api/students/{student_id}/classes",
+            "method": "GET",
+            "output_encoding": "no-op",
+            "backend": [
+                {
+                    "url_pattern": "/students/{student_id}/classes",
+                    "host": [
+                        "http://localhost:5300",
+                        "http://localhost:5400",
+                        "http://localhost:5500"
+                    ],
+                    "encoding": "no-op",
+                    "extra_config": {
+                        "backend/http": {
+                            "return_error_details": "backend_StudentClasses"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "_comment": "STUDENT API GET -  ENROLLED",
+            "endpoint": "/api/students/{student_id}/enrolled",
+            "method": "GET",
+            "output_encoding": "no-op",
+            "backend": [
+                {
+                    "url_pattern": "/students/{student_id}/enrolled",
+                    "host": [
+                        "http://localhost:5300",
+                        "http://localhost:5400",
+                        "http://localhost:5500"
+                    ],
+                    "encoding": "no-op",
+                    "extra_config": {
+                        "backend/http": {
+                            "return_error_details": "backend_StudentEnrolled"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "_comment": "STUDENT API POST -  ENROLL",
+            "endpoint": "/api/students/{student_id}/classes/{class_id}/enroll",
+            "method": "POST",
+            "output_encoding": "no-op",
+            "backend": [
+                {
+                    "url_pattern": "/students/{student_id}/classes/{class_id}/enroll",
+                    "host": [
+                        "http://localhost:5300",
+                        "http://localhost:5400",
+                        "http://localhost:5500"
+                    ],
+                    "encoding": "no-op",
+                    "extra_config": {
+                        "backend/http": {
+                            "return_error_details": "backend_StudentEnroll"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "_comment": "STUDENT API PUT -  DROP",
+            "endpoint": "/api/students/{student_id}/classes/{class_id}/drop/",
+            "method": "PUT",
+            "output_encoding": "no-op",
+            "backend": [
+                {
+                    "url_pattern": "/students/{student_id}/classes/{class_id}/drop/",
+                    "host": [
+                        "http://localhost:5300",
+                        "http://localhost:5400",
+                        "http://localhost:5500"
+                    ],
+                    "encoding": "no-op",
+                    "extra_config": {
+                        "backend/http": {
+                            "return_error_details": "backend_StudentDrop"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "_comment": "WAIT LIST API GET - CLASSESS",
+            "endpoint": "/api/waitlist/classes",
+            "method": "GET",
+            "output_encoding": "no-op",
+            "backend": [
+                {
+                    "url_pattern": "/waitlist/classes",
+                    "host": [
+                        "http://localhost:5300",
+                        "http://localhost:5400",
+                        "http://localhost:5500"
+                    ],
+                    "encoding": "no-op",
+                    "extra_config": {
+                        "backend/http": {
+                            "return_error_details": "backend_WaitClasses"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "_comment": "WAIT LIST API GET - WAITINGLIST",
+            "endpoint": "/api/waitlist/students/{student_id}",
+            "method": "GET",
+            "output_encoding": "no-op",
+            "backend": [
+                {
+                    "url_pattern": "/waitlist/students/{student_id}",
+                    "host": [
+                        "http://localhost:5300",
+                        "http://localhost:5400",
+                        "http://localhost:5500"
+                    ],
+                    "encoding": "no-op",
+                    "extra_config": {
+                        "backend/http": {
+                            "return_error_details": "backend_WaitStudent"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "_comment": "WAIT LIST API PUT - DROP",
+            "endpoint": "/api/waitlist/students/{student_id}/classes/{class_id}/drop",
+            "method": "PUT",
+            "output_encoding": "no-op",
+            "backend": [
+                {
+                    "url_pattern": "/waitlist/students/{student_id}/classes/{class_id}/drop",
+                    "host": [
+                        "http://localhost:5300",
+                        "http://localhost:5400",
+                        "http://localhost:5500"
+                    ],
+                    "encoding": "no-op",
+                    "extra_config": {
+                        "backend/http": {
+                            "return_error_details": "backend_WaitDrop"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "_comment": "WAIT LIST API GET - CURRENT",
+            "endpoint": "/api/waitlist/instructors/{instructor_id}/classes/{class_id}",
+            "method": "GET",
+            "output_encoding": "no-op",
+            "backend": [
+                {
+                    "url_pattern": "/waitlist/instructors/{instructor_id}/classes/{class_id}",
+                    "host": [
+                        "http://localhost:5300",
+                        "http://localhost:5400",
+                        "http://localhost:5500"
+                    ],
+                    "encoding": "no-op",
+                    "extra_config": {
+                        "backend/http": {
+                            "return_error_details": "backend_WaitCurrent"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "_comment": "INSTRUCTOR API GET - ENROLLMENT",
+            "endpoint": "/api/instructors/{instructor_id}/classes/{class_id}/enrollment",
+            "method": "GET",
+            "output_encoding": "no-op",
+            "backend": [
+                {
+                    "url_pattern": "/instructors/{instructor_id}/classes/{class_id}/enrollment",
+                    "host": [
+                        "http://localhost:5300",
+                        "http://localhost:5400",
+                        "http://localhost:5500"
+                    ],
+                    "encoding": "no-op",
+                    "extra_config": {
+                        "backend/http": {
+                            "return_error_details": "backend_InstructorEnrollment"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "_comment": "INSTRUCTOR API GET - DROPPED",
+            "endpoint": "/api/instructors/{instructor_id}/classes/{class_id}/drop",
+            "method": "GET",
+            "output_encoding": "no-op",
+            "backend": [
+                {
+                    "url_pattern": "/instructors/{instructor_id}/classes/{class_id}/drop",
+                    "host": [
+                        "http://localhost:5300",
+                        "http://localhost:5400",
+                        "http://localhost:5500"
+                    ],
+                    "encoding": "no-op",
+                    "extra_config": {
+                        "backend/http": {
+                            "return_error_details": "backend_InstructorDropped"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "_comment": "INSTRUCTOR API POST - DROPSTUDENTS",
+            "endpoint": "/api/instructors/{instructor_id}/classes/{class_id}/students/{student_id}/drop",
+            "method": "POST",
+            "output_encoding": "no-op",
+            "backend": [
+                {
+                    "url_pattern": "/instructors/{instructor_id}/classes/{class_id}/students/{student_id}/drop",
+                    "host": [
+                        "http://localhost:5300",
+                        "http://localhost:5400",
+                        "http://localhost:5500"
+                    ],
+                    "encoding": "no-op",
+                    "extra_config": {
+                        "backend/http": {
+                            "return_error_details": "backend_InstructorDroppStudents"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "_comment": "REGISTRAR API POST - CLASSESS",
+            "endpoint": "/api/registrar/classes/",
+            "method": "POST",
+            "output_encoding": "no-op",
+            "backend": [
+                {
+                    "url_pattern": "/registrar/classes/",
+                    "host": [
+                        "http://localhost:5300",
+                        "http://localhost:5400",
+                        "http://localhost:5500"
+                    ],
+                    "encoding": "no-op",
+                    "extra_config": {
+                        "backend/http": {
+                            "return_error_details": "backend_RegistrarClasses"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "_comment": "REGISTRAR API DELETE - REMOVE CLASSESS",
+            "endpoint": "/api/registrar/classes/{class_id}",
+            "method": "DELETE",
+            "output_encoding": "no-op",
+            "backend": [
+                {
+                    "url_pattern": "/registrar/classes/{class_id}",
+                    "host": [
+                        "http://localhost:5300",
+                        "http://localhost:5400",
+                        "http://localhost:5500"
+                    ],
+                    "encoding": "no-op",
+                    "extra_config": {
+                        "backend/http": {
+                            "return_error_details": "backend_RegistrarRemoveClasses"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "_comment": "REGISTRAR API PUT - ASSIGN INSTRUCTOR",
+            "endpoint": "/api/registrar/classes/{class_id}/instructors/{instructor_id}",
+            "method": "PUT",
+            "output_encoding": "no-op",
+            "backend": [
+                {
+                    "url_pattern": "/registrar/classes/{class_id}/instructors/{instructor_id}",
+                    "host": [
+                        "http://localhost:5300",
+                        "http://localhost:5400",
+                        "http://localhost:5500"
+                    ],
+                    "encoding": "no-op",
+                    "extra_config": {
+                        "backend/http": {
+                            "return_error_details": "backend_RegistrarAssignInstructor"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "_comment": "REGISTRAR API PUT - FREEZE",
+            "endpoint": "/api/registrar/automatic-enrollment/freeze",
+            "method": "PUT",
+            "output_encoding": "no-op",
+            "backend": [
+                {
+                    "url_pattern": "/registrar/automatic-enrollment/freeze",
+                    "host": [
+                        "http://localhost:5300",
+                        "http://localhost:5400",
+                        "http://localhost:5500"
+                    ],
+                    "encoding": "no-op",
+                    "extra_config": {
+                        "backend/http": {
+                            "return_error_details": "backend_RegistrarFreeze"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "_comment": "LOGIN",
+            "endpoint": "/api/login",
+            "method": "POST",
+            "output_encoding": "json",
+            "extra_config": {
+                "auth/signer": {
+                    "alg": "HS256",
+                    "jwk_local_path": "symmetric.json",
+                    "keys_to_sign": [
+                        "access_token",
+                        "refresh_token"
+                    ],
+                    "kid": "sim2",
+                    "disable_jwk_security": true
+                }
+            },
+            "backend": [
+                {
+                    "url_pattern": "/login",
+                    "host": [
+                        "http://localhost:5300",
+                        "http://localhost:5400",
+                        "http://localhost:5500"
+                    ],
+                    "encoding": "json",
+                    "method": "POST",
+                    "extra_config": {
+                        "backend/http": {
+                            "return_error_details": "backend_login"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "endpoint": "/api/protected",
+            "method": "GET",
+            "extra_config": {
+                "auth/validator": {
+                    "alg": "HS256",
+                    "roles_key": "roles",
+                    "roles": [
+                        "admin"
+                    ],
+                    "jwk_local_path": "symmetric.json",
+                    "cache": false,
+                    "disable_jwk_security": true
+                }
+            },
+            "backend": [
+                {
+                    "url_pattern": "/protected",
+                    "host": [
+                        "http://localhost:5300",
+                        "http://localhost:5400",
+                        "http://localhost:5500"
+                    ],
+                    "encoding": "json",
+                    "method": "GET",
+                    "extra_config": {
+                        "backend/http": {
+                            "return_error_details": "backend_users_protected"
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

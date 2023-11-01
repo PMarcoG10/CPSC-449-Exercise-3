@@ -20,6 +20,9 @@ users_router = APIRouter()
 settings = Settings()
 
 database = "users.db"
+primary_users_db = "var/primary/fuse/users.db"
+secondary_users_db_1 = "var/secondary/fuse/users.db"
+secondary_users_db_2 = "var/secondary_2/fuse/users.db"
 enrollmentdb = "database.db"
 
 ALGORITHM = "pbkdf2_sha256"
@@ -44,6 +47,19 @@ def get_enrollment_db(logger: logging.Logger = Depends(get_logger)):
         edb.row_factory = sqlite3.Row
         edb.set_trace_callback(logging.debug)
         yield edb
+
+# Connect to the two secondary users databases
+def get_secondary_users_db_1():
+    with contextlib.closing(sqlite3.connect(secondary_users_db_1, check_same_thread=False)) as db:
+        db.row_factory = sqlite3.Row
+        db.set_trace_callback(logging.debug)
+        yield db
+
+def get_secondary_users_db_2():
+    with contextlib.closing(sqlite3.connect(secondary_users_db_2, check_same_thread=False)) as db:
+        db.row_factory = sqlite3.Row
+        db.set_trace_callback(logging.debug)
+        yield db
 
 logging.config.fileConfig(settings.logging_config, disable_existing_loggers=False)
 

@@ -43,10 +43,18 @@ def get_users_db(logger: logging.Logger = Depends(get_logger)):
         udb.set_trace_callback(logger.debug)
         yield udb
 
+# Connect to the primary users database
+def get_primary_users_db():
+    with contextlib.closing(sqlite3.connect(primary_users_db, check_same_thread=False)) as db:
+        db.row_factory = sqlite3.Row
+        db.set_trace_callback(logging.debug)
+        yield db
+
 FREEZE = False
 MAX_WAITLIST = 3
 database = "database.db"
 users_db = "users.db"
+primary_users_db = "var/primary/fuse/users.db"
 ALGORITHM = "pbkdf2_sha256"
 
 logging.config.fileConfig(settings.logging_config, disable_existing_loggers=False)
